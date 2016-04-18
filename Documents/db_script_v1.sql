@@ -73,11 +73,13 @@ CREATE TABLE VideosLikes(
     FOREIGN KEY (VideoId) REFERENCES Videos(Id)
 );
 
-CREATE TABLE VideosStatusCount(
+CREATE TABLE VideosStatusCounts(
+	Id INT AUTO_INCREMENT NOT NULL,
     Pending INT NOT NULL,
     Processsing INT NOT NULL,
     Successed INT NOT NULL,
-    Failed INT NOT NULL
+    Failed INT NOT NULL,
+	PRIMARY KEY(Id)
 );
 
 CREATE TABLE VideoComments(
@@ -134,3 +136,6 @@ AFTER INSERT ON Videos FOR EACH ROW
 BEGIN
    CALL UpdateCounts();
 END//
+
+/*INSERT INTO VideosStatusCounts(Pending,Processsing,Successed,Failed) VALUES(0,0,0,0)*/
+
