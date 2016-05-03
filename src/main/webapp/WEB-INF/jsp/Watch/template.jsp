@@ -40,6 +40,13 @@
 	crossorigin="anonymous"></script>
 <link>
 
+<!-- Bootstrap Select -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+
 <!-- ============================AngularJS Library===========-->
 
 <!-- Angular Material requires Angular.js Libraries -->
@@ -83,22 +90,23 @@
 				</button>
 				<a class="navbar-brand" href="index"><span
 					class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
-					CLTV <span class="glyphicon glyphicon-picture" aria-hidden="true"></span></a>
+					Pinfilms <span class="glyphicon glyphicon-picture" aria-hidden="true"></span></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">New Movies</a></li>
-					<li><a href="#">Top Like</a></li>
-					<li><a href="#">Genres</a></li>
+					<li><a href="#">Phim mới</a></li>
+					<li><a href="#">Xem nhiều</a></li>
+					<li><a href="Videos/showAlls/1">Tất cả</a></li>
+					<li><a href="#">Thể loại</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Manager<span class="caret"></span></a>
+						aria-expanded="false">Quản lý<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Upload</a></li>
-							<li><a href="#">Movies</a></li>
+							<li><a href="Videos/upload">Upload</a></li>
+							<li><a href="Videos/listVideos">Movies</a></li>
 							<li><a href="#">Users</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="#">Admin Page</a></li>
@@ -112,7 +120,7 @@
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="Search">
 							</div>
-							<button type="submit" class="btn btn-default">Search</button>
+							<button type="submit" class="btn btn-default">Tìm</button>
 						</form></li>
 					<li><a href="#">Link</a></li>
 					<jsp:include page="_user-nav.jsp"></jsp:include>

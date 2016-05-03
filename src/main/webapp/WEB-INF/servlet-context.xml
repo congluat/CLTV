@@ -64,6 +64,30 @@
 	<bean id="userService" class="service.UserServiceImpl">
 	</bean>
 	
+	<bean id="videoDAO" class="dao.VideoDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="videoService" class="service.VideoServiceImpl">
+	</bean>
+	
+	<bean id="genreDAO" class="dao.GenreDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="genreService" class="service.GenreServiceImpl">
+	</bean>
+	
+	<bean id="permissionDAO" class="dao.PermissionDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="permissionService" class="service.PermissionServiceImpl">
+	</bean>
+	
+	<bean id="videosStatusCountDAO" class="dao.VideosStatusCountDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="videosStatusCountService" class="service.VideosStatusCountServiceImpl">
+	</bean>
+	
 <!-- 
 	<bean id="invoiceDao" class="dao.InvoiceDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -122,29 +146,39 @@
 			</list>
 		</property>
 	</bean>
-<!--  
+	
+ 
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		maxUploadSize=20MB
-		<property name="maxUploadSize" value="20485760" />
+		<!-- maxUploadSize=200MB -->
+		<property name="maxUploadSize" value="204857600" />
 	</bean>
-	Configures Handler Interceptors
+	
+	<!-- Configures Handler Interceptors -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="interceptor.CheckUserInterceptor" />
+			<bean class="interceptor.UserPermission" />
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 
 
 
 	
-<!-- 	<bean id="CleanupImages" class="scheduledtask.CleanupImages" />
+ <!-- 	<bean id="JobConverter" class="job.JobConverter" />
 	<task:scheduled-tasks>
-		<task:scheduled ref="CleanupImages" method="run" cron="*/10 * * * 
+		<task:scheduled ref="JobConverter" method="run" cron="*/10 * * * 
 			* *" />
-		<task:scheduled ref="CleanupImages" method="run"
+		
+		<task:scheduled ref="JobConverter" method="run"
 			cron="59 59 23 * * *" />
-	</task:scheduled-tasks>
-	 -->
+			
+	</task:scheduled-tasks> -->
+	
+	<bean id="ValidateVideos" class="job.ValidateVideos" />
+	<task:scheduled-tasks>
+		<task:scheduled ref="ValidateVideos" method="run" cron="0 */1 * * * *" />
+			
+	</task:scheduled-tasks> 
+	 
 </beans>

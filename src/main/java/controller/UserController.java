@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,13 +48,25 @@ public class UserController {
 
 	}
 
-	@RequestMapping(value = "login")
+	@RequestMapping(value = "/login", method= RequestMethod.POST)
 	@ResponseBody
 	public Result login(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("username") String username, @RequestParam("password") String password,
 			@RequestParam("remember") Boolean remember) {
 		
 		return userSvivce.login(request,username, password);
+	}
+	
+	@RequestMapping(value="/loginf", method=RequestMethod.GET)
+	public String loginForm(HttpServletRequest request, HttpServletResponse response, ModelMap model){
+		model.addAttribute("title", "Đăng nhập");
+		return "Watch/registerForm";
+	}
+	
+	@RequestMapping(value="/Logout", method=RequestMethod.GET)
+	public String logOut(HttpServletRequest request, HttpServletResponse response, ModelMap model){
+		request.getSession().setAttribute("currentUser", null);
+		return "redirect:/index";
 	}
 
 }

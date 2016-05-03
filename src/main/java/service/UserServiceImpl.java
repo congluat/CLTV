@@ -58,6 +58,7 @@ public class UserServiceImpl implements UserService {
 				boolean result = userDao.isValidUser(username, MD5Encrypt.hashString(password));
 				if (result == true) {
 					request.getSession().setAttribute("CurrentUser", getUserByUsername(username) );
+					request.getSession().setAttribute("currentUser", getUserByUsername(username));
 					return new Result(true, "Login successed");
 				} else {
 					return new Result(false, "Username or Password is incorrect");

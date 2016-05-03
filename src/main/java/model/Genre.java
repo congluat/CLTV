@@ -26,6 +26,9 @@ public class Genre implements Serializable {
 	@Size(max = 40)
 	private String name;
 
+	@Size(max=400)
+	public String photo;
+	
 	@OneToMany(mappedBy = "genre")
 	private Collection<Video> videos;
 
@@ -43,8 +46,16 @@ public class Genre implements Serializable {
 	
 	public void setName(String name) {
 		this.name = name;
-	}
+	}	
 	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	@JsonIgnore
 	public Collection<Video> getVideos() {
 		return videos;

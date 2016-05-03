@@ -18,6 +18,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Users")
 public class User implements Serializable {
@@ -57,6 +59,9 @@ public class User implements Serializable {
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private Collection<VideosLike> videoslikes;
+	
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	private Collection<VideosView> videosviews;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private Collection<VideoComment> videocomments;
@@ -124,7 +129,7 @@ public class User implements Serializable {
 	public void setUserPermissions(Collection<UserPermission> userPermissions) {
 		this.userPermissions = userPermissions;
 	}
-
+	
 	public Collection<Video> getVideos() {
 		return videos;
 	}
@@ -132,13 +137,23 @@ public class User implements Serializable {
 	public void setVideos(Collection<Video> videos) {
 		this.videos = videos;
 	}
-
+	
+	@JsonIgnore
 	public Collection<VideosLike> getVideoslikes() {
 		return videoslikes;
 	}
 
 	public void setVideoslikes(Collection<VideosLike> videoslikes) {
 		this.videoslikes = videoslikes;
+	}
+	
+	@JsonIgnore
+	public Collection<VideosView> getVideosviews() {
+		return videosviews;
+	}
+
+	public void setVideosviews(Collection<VideosView> videosviews) {
+		this.videosviews = videosviews;
 	}
 
 	public Collection<VideoComment> getVideocomments() {

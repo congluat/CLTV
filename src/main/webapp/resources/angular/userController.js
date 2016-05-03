@@ -8,7 +8,7 @@ angular
 		.module('myApp')
 		.controller(
 				'UserController',
-				function($scope, $http, $window) {
+				function($scope, $http, $window,$location) {
 
 					$scope.user = {
 						username : '',
@@ -51,10 +51,10 @@ angular
 								function(data) {
 									$scope.result = data;
 									if(data.result==true){
-										console.log("true"+data.cause);
+										/*console.log("true"+data.cause);*/
 										$('.register-modal').hide();
 										$('.successed-modal').show();
-										
+										$window.location.href ="index";
 									}else{
 										console.log("false"+data.cause);
 									}
@@ -87,7 +87,8 @@ angular
 								function(data) {
 									$scope.result = data;
 									if(data.result==true){
-										console.log("true"+data.cause);
+										/*console.log("true"+data.cause);*/
+										$window.location.href ="index";
 										
 									}else{
 										console.log("false"+data.cause);

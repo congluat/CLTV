@@ -14,11 +14,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import util.DateTimeUtil;
 
 @Entity
 @Table(name = "Videos")
@@ -35,6 +38,10 @@ public class Video implements Serializable {
 	@NotEmpty
 	@Size(max = 200)
 	private String filename;
+
+	private String trailer;
+
+	private Boolean isYoutube;
 
 	@Size(max = 200)
 	private String director;
@@ -56,14 +63,17 @@ public class Video implements Serializable {
 	@Size(max = 40)
 	private String language;
 
-	@NotEmpty
-	private Integer tLike=0;
+	@NotNull
+	private Integer tLike = 0;
 
-	@NotEmpty
-	private Integer tview=0;
+	@NotNull
+	private Integer tView = 0;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date time = new Date();
+	private Date time = DateTimeUtil.getCurrentGMTTime();
+
+	@NotNull
+	private Integer status = 0;
 
 	@ManyToOne
 	@JoinColumn(name = "UserId")
@@ -75,6 +85,9 @@ public class Video implements Serializable {
 
 	@OneToMany(mappedBy = "video", fetch = FetchType.EAGER)
 	private Collection<VideosLike> videoslikes;
+
+	@OneToMany(mappedBy = "video", fetch = FetchType.EAGER)
+	private Collection<VideosView> videosviews;
 
 	@OneToMany(mappedBy = "video", fetch = FetchType.EAGER)
 	private Collection<VideoComment> videocomment;
@@ -93,6 +106,14 @@ public class Video implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getTrailer() {
+		return trailer;
+	}
+
+	public void setTrailer(String trailer) {
+		this.trailer = trailer;
 	}
 
 	public String getFilename() {
@@ -143,6 +164,14 @@ public class Video implements Serializable {
 		this.poster = poster;
 	}
 
+	public Boolean getIsYoutube() {
+		return isYoutube;
+	}
+
+	public void setIsYoutube(Boolean isYoutube) {
+		this.isYoutube = isYoutube;
+	}
+
 	public String getCountry() {
 		return country;
 	}
@@ -167,12 +196,12 @@ public class Video implements Serializable {
 		this.tLike = tLike;
 	}
 
-	public Integer getTview() {
-		return tview;
+	public Integer gettView() {
+		return tView;
 	}
 
-	public void setTview(Integer tview) {
-		this.tview = tview;
+	public void settView(Integer tView) {
+		this.tView = tView;
 	}
 
 	public Date getTime() {
@@ -181,6 +210,14 @@ public class Video implements Serializable {
 
 	public void setTime(Date time) {
 		this.time = time;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
 	public User getUser() {
@@ -206,6 +243,15 @@ public class Video implements Serializable {
 
 	public void setVideoslikes(Collection<VideosLike> videoslikes) {
 		this.videoslikes = videoslikes;
+	}
+
+	@JsonIgnore
+	public Collection<VideosView> getVideosviews() {
+		return videosviews;
+	}
+
+	public void setVideosviews(Collection<VideosView> videosviews) {
+		this.videosviews = videosviews;
 	}
 
 	@JsonIgnore

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.User;
+import model.VideosLike;
+import model.VideosView;
 
 @Repository
 public class UserDAOImpl implements UserDAO {

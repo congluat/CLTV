@@ -1,6 +1,8 @@
 package dao;
 
 import model.User;
+import model.VideosLike;
+import model.VideosView;
 
 public interface UserDAO {
 
@@ -15,7 +17,5 @@ public interface UserDAO {
 	public User getUserByEmail(String email);
 	
 	public boolean isValidUser(String un, String pw);
-	
-	
 
 }
