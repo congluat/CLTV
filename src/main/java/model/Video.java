@@ -83,6 +83,10 @@ public class Video implements Serializable {
 	@JoinColumn(name = "GenreId")
 	private Genre genre;
 
+	@ManyToOne
+	@JoinColumn(name = "TypeId")
+	private Type type;
+	
 	@OneToMany(mappedBy = "video", fetch = FetchType.EAGER)
 	private Collection<VideosLike> videoslikes;
 
@@ -236,6 +240,14 @@ public class Video implements Serializable {
 		this.genre = genre;
 	}
 
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	@JsonIgnore
 	public Collection<VideosLike> getVideoslikes() {
 		return videoslikes;
@@ -262,5 +274,7 @@ public class Video implements Serializable {
 	public void setVideocomment(Collection<VideoComment> videocomment) {
 		this.videocomment = videocomment;
 	}
+	
+
 
 }

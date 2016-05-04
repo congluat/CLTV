@@ -221,6 +221,15 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+		
+		<!-- Youtube api -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-youtube</artifactId>
+			<version>v3-rev171-1.18.0-rc</version>
+		</dependency>
+		
+		
 	</dependencies>
 
 	<build>

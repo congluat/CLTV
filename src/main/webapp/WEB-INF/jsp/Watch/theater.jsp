@@ -85,6 +85,15 @@
 			<h4>
 				Diễn viên: <span class="data">${video.stars}</span>
 			</h4>
+			<h4>
+				<span class="data">${video.type.name}</span> - <span class="data">${video.genre.name}</span>
+			</h4>
+			<h4>
+				Quốc gia: <span class="data">${video.country}</span>
+			</h4>
+			<h4>
+				Ngôn ngữ: <span class="data">${video.language}</span>
+			</h4>
 		</div>
 		<div class="col-md-6">
 			<h5 class="col-md-4">

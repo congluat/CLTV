@@ -49,7 +49,7 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<context:component-scan
-		base-package="controller, dao, service, interceptor,job" />
+		base-package="controller, dao, service" />
 
 	<mvc:annotation-driven />
 
@@ -58,6 +58,7 @@
 		<property name="basename" value="messages" />
 	</bean>
 	
+	<!-- ========== DAO and Service START -->
 	<bean id="userDAO" class="dao.UserDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -76,6 +77,12 @@
 	<bean id="genreService" class="service.GenreServiceImpl">
 	</bean>
 	
+	<bean id="typeDAO" class="dao.TypeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="typeService" class="service.TypeServiceImpl">
+	</bean>
+	
 	<bean id="permissionDAO" class="dao.PermissionDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -88,49 +95,12 @@
 	<bean id="videosStatusCountService" class="service.VideosStatusCountServiceImpl">
 	</bean>
 	
-<!-- 
-	<bean id="invoiceDao" class="dao.InvoiceDAOImpl">
+	<bean id="userPermissionDAO" class="dao.UserPermissionDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-	<bean id="invoiceService" class="service.InvoiceServiceImpl">
-	</bean>
-
-	<bean id="categoryDao" class="dao.CategoryDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="categoryService" class="service.CategoryServiceImpl">
-	</bean>
-
-	<bean id="userDao" class="dao.UserDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="userService" class="service.UserServiceImpl">
-	</bean>
-
-	<bean id="photoDao" class="dao.PhotoDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="reportDao" class="dao.ReportDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<bean id="photoService" class="service.PhotoServiceImpl">
-	</bean>
-
-	<bean id="reportService" class="service.ReportServiceImpl">
-	</bean>
-
-	<bean id="reminderDao" class="dao.ReminderDAOImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<bean id="reminderService" class="service.ReminderServiceImpl">
-	</bean>
--->
-
+	<!-- ========== DAO and Service END -->
+	
+	<!-- Tiles make template STARTS -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass">
@@ -146,8 +116,9 @@
 			</list>
 		</property>
 	</bean>
+	<!-- Tiles make template ENDS -->
 	
- 
+ 	<!-- Upload file -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- maxUploadSize=200MB -->

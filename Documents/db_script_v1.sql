@@ -42,6 +42,15 @@ CREATE TABLE Genres(
     UNIQUE (Name)
 );
 
+CREATE TABLE Types(
+	Id INT AUTO_INCREMENT NOT NULL,
+    Name VARCHAR(200) NOT NULL,
+    Photo VARCHAR(400),
+    PRIMARY KEY (Id),
+	UNIQUE (Name)
+);
+
+
 CREATE TABLE Videos(
 	Id INT AUTO_INCREMENT NOT NULL,
     Name VARCHAR(200) NOT NULL,
@@ -49,6 +58,7 @@ CREATE TABLE Videos(
     Trailer VARCHAR(200),
     IsYoutube BIT NOT NULL,
     GenreId INT NOT NULL,
+    TypeId INT NOT NULL,
     UserId INT NOT NULL,
     Director VARCHAR(200),
     Stars VARCHAR(200),
@@ -64,7 +74,8 @@ CREATE TABLE Videos(
     PRIMARY KEY (Id),
     UNIQUE (Filename),
     FOREIGN KEY (UserId) REFERENCES Users(Id),
-    FOREIGN KEY (GenreId) REFERENCES Genres(Id)
+    FOREIGN KEY (GenreId) REFERENCES Genres(Id),
+	FOREIGN KEY (TypeId) REFERENCES Types(Id)
 );
 
 CREATE TABLE VideosLikes(
@@ -155,16 +166,29 @@ END//
 /*DROP TRIGGER CountVideoStatus */
 
 INSERT INTO Users(Id, Username, Password,Email, DoB, status,Time) values (0, 'guest', '123','guest','00000000',1,'2000-01-01 00:00:00');
+UPDATE `clmovie_db`.`Users` SET `Id`='0' WHERE `Id`='1';
+
 
 INSERT INTO VideosStatusCounts(Pending,Processing,Successed,Failed) VALUES(0,0,0,0);
 
-INSERT INTO Genres(name, photo) values('Phim bộ', 'phimbo.png');
+INSERT INTO Types(name, photo) values('Phim bộ', 'phimbo.png');
+INSERT INTO Types(name, photo) values('Phim lẻ', 'phimle.png');
+INSERT INTO Types(name, photo) values('MV âm nhạc', 'amnhac.png');
+INSERT INTO Types(name, photo) values('Phim lẻ', 'phimle.png');
+INSERT INTO Types(name, photo) values('Loại khác', 'khac.png');
+INSERT INTO Types(name, photo) values('Phim ngắn của ngành Quản Trị Công Nghệ & Truyền Thông', '');
+INSERT INTO Types(name, photo) values('Phim ngắn trong nước', '');
+INSERT INTO Types(name, photo) values('Phim ngắn nước ngoài', '');
+INSERT INTO Types(name, photo) values('TCV ngành Quản Trị Công Nghệ & Truyền Thông', '');
+INSERT INTO Types(name, photo) values('TCV và clip hài hay trong nước và ngoài nước', '');
+
+
+
 INSERT INTO Genres(name, photo) values('Phim hành động', 'phimhanhdong.png');
 INSERT INTO Genres(name, photo) values('Phim 18+', 'phim18.png');
 INSERT INTO Genres(name, photo) values('Phim hài', 'phimhai.png');
+INSERT INTO Genres(name, photo) values('Loại khác', 'khac.png');
 
 INSERT INTO Permissions(Controller) values('/Videos/upload');
 INSERT INTO Permissions(Controller) values('/Videos/listVideos');
-INSERT INTO Permissions(Controller) values('');
-INSERT INTO Permissions(Controller) values('');
-INSERT INTO Permissions(Controller) values('');
+INSERT INTO Permissions(Controller) values('/Videos/edit');

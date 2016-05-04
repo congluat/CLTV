@@ -134,6 +134,8 @@
 	<article>
 		<tiles:insertAttribute name="body"></tiles:insertAttribute>
 	</article>
-
+	<footer>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>
