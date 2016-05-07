@@ -4,12 +4,34 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <style>
+
+.navbar-default {
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	background: transparent;
+	color: white;
+	font-weight:100;
+	border: none;
+	background: rgba(0, 0, 0, 0) url("<c:url value='/resources/banners/bg_menu.png'/>") repeat-x scroll 0 0 !important;
+	
+}
+
+.navbar-default .navbar-brand {
+	color: white;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: white;
+}
+
 .carousel-inner img {
 	width: 100%
 }
 
 .carousel-inner {
 	width: 70%;
+	height: 30%;
 	text-align: center;
 	margin-left: 15%;
 	text-align: center;
@@ -121,6 +143,8 @@
 	</a>
 </div>
 <div class="container">
+	
+
 	<h2 class="col-md-12">Phim ngắn của ngành Quản Trị Công Nghệ &
 		Truyền Thông</h2>
 	<div class="col-md-12">

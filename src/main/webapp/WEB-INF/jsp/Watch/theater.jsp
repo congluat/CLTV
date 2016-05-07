@@ -33,25 +33,28 @@
 <script src="//vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
  -->
 <div class="container">
-	<%-- <video id=example-video width="100%"
+
+	<c:if test="${!video.isYoutube}">
+	 <video id=example-video width="100%"
 		class="video-js vjs-default-skin" controls preload="auto"
 		data-setup="{}">
 		<source src="<c:url value='/resources/thaimovie/playlist.m3u8'/>"
 			type='application/x-mpegURL'>
-	</video> --%>
+	</video>
+	 <script>
+		$(document).ready(function() {
+			var player = videojs('example-video');
+			player.play();
+		});
+	</script>
+	
+	</c:if>
+	
+	<c:if test="${video.isYoutube}">
 	<video id="vid1" class="video-js vjs-16-9 vjs-default-skin" controls
 		autoplay width="800" height="450"
 		data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${video.filename}"}],"youtube": { "iv_load_policy": 3,"cc_load_policy":1,"modestbranding":1 } }'>
 	</video>
-
-	<script src="<c:url value='/resources/js/videojs/videojs.js'/>"></script>
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/Youtube.js'/>"></script>
-
-
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/videojs/videojs-contrib-hls.js'/>"></script>
-
 	<script>
 		videojs('vid1').ready(function() {
 			var myPlayer = this;
@@ -75,6 +78,16 @@
 			setTimeout(arguments.callee, 5000);
 		})();
 	</script>
+	</c:if>
+	<!-- Load videojs library -->
+	<script src="<c:url value='/resources/js/videojs/videojs.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/Youtube.js'/>"></script>
+
+
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/videojs/videojs-contrib-hls.js'/>"></script>
+		
 	<div class="col-md-12 infor">
 		<h2 class="col-md-12">${video.name}</h2>
 		<hr class="divider">
@@ -128,10 +141,5 @@
 	<div class="col-md-12 cmt">
 		<h1 class="col-md-12 title">Bình luận</h1>
 	</div>
-	<!-- <script>
-		$(document).ready(function() {
-			var player = videojs('example-video');
-			player.play();
-		});
-	</script> -->
+	
 </div>
