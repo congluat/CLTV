@@ -9,6 +9,10 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/Watch/{1}.jsp" />
 	</definition>
 	
+	<definition name="Admin/*" template="/WEB-INF/jsp/Admin/template.jsp">
+		<put-attribute name="body" value="/WEB-INF/jsp/Admin/{1}.jsp" />
+	</definition>
+	
 	<!-- <definition name="error/*" template="/WEB-INF/jsp/error/template.jsp">
 		<put-attribute name="body" value="/WEB-INF/jsp/error/{1}.jsp" />
 	</definition> -->

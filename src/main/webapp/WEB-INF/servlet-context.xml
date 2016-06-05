@@ -148,7 +148,7 @@
 	
 	<bean id="ValidateVideos" class="job.ValidateVideos" />
 	<task:scheduled-tasks>
-		<task:scheduled ref="ValidateVideos" method="run" cron="0 */1 * * * *" />
+		<task:scheduled ref="ValidateVideos" method="run" cron="0 */10 * * * *" />
 			
 	</task:scheduled-tasks> 
 	 

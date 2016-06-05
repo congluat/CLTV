@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,9 +54,14 @@ public class UserController {
 	@ResponseBody
 	public Result login(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("username") String username, @RequestParam("password") String password,
-			@RequestParam("remember") Boolean remember) {
+			@RequestParam("remember") Boolean remember) throws IOException {
+		/*if(userSvivce.login(request,username, password).getResult()==true){
+			response.sendRedirect(request.getSession().getAttribute("prevURL").toString());
+			return null;
+		}else{*/
+			return userSvivce.login(request,username, password);
+		//}
 		
-		return userSvivce.login(request,username, password);
 	}
 	
 	@RequestMapping(value="/loginf", method=RequestMethod.GET)
@@ -69,4 +76,30 @@ public class UserController {
 		return "redirect:/index";
 	}
 
+	@RequestMapping(value="/Profile", method=RequestMethod.GET)
+	public String profile(ModelMap model, HttpServletRequest req){
+		User user = (User) req.getSession().getAttribute("currentUser");
+		if(user==null){
+			return "redirect:/User/loginf";
+		}else{
+			user = userSvivce.getUserByd(user.getId());
+			user.setPassword("");
+			model.addAttribute("user",user);
+			model.addAttribute("title", "Tài khoản");
+		}	
+		return "Watch/profile";
+	}
+	
+	@RequestMapping(value="/Profile", method=RequestMethod.POST)
+	public String saveProfile(ModelMap model, HttpServletRequest req, @ModelAttribute User user){
+		user.setTime(new Date());
+		Result r = userSvivce.update(user);		
+		if(r.getResult()==true){
+			//model.addAttribute("result", "Thảnh công");
+		}else{
+			//model.addAttribute("result", "Thất bại");
+		}	
+		//model.addAttribute("title", "Tài khoản");
+		return "redirect:/User/Profile";
+	}
 }

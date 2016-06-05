@@ -1,3 +1,7 @@
+article{
+	min-height: 100vh;
+}
+
 .ng-invalid.ng-dirty {
 	border-color: red;
 }
@@ -8,4 +12,106 @@
 
 body{
 	font-family: 'Open Sans', sans-serif;
+	background-color: #2A363B;
+}
+
+h1, h2, h3, h4, h5, h6{
+	/* color: #b21d07; */
+	color: #E84A5F
+}
+
+.container-4{
+  overflow: hidden;
+  width: 200px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.container-4 input#search{
+  width: 200px;
+  height: 40px;
+  background: white;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #212020;
+  padding-left: 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.container-4 input#search::-webkit-input-placeholder {
+   color: #65737e;
+}
+ 
+.container-4 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;  
+}
+ 
+.container-4 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;  
+}
+ 
+.container-4 input#search:-ms-input-placeholder {  
+   color: #65737e;  
+}
+
+.container-4 button.icon{
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+ 
+  border: none;
+  background: #65737e;
+  height: 40px;
+  width: 40px;
+  color: #4f5b66;
+  opacity: 0;
+  font-size: 10pt;
+ 
+  -webkit-transition: all .55s ease;
+  -moz-transition: all .55s ease;
+  -ms-transition: all .55s ease;
+  -o-transition: all .55s ease;
+  transition: all .55s ease;
+}
+
+.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
+  outline: none;
+  opacity: 1;
+  margin-left: -40px;
+}
+ 
+.container-4:hover button.icon:hover{
+  background: white;
+}
+
+.navbar-default {
+/* 	position: absolute;
+	z-index: 10;
+	width: 100%; */
+	/* background: transparent;
+	color: white;
+	font-weight:100;
+	border: none;
+	background: rgba(0, 0, 0, 0) url("<c:url value='/resources/banners/bg_menu.png'/>") repeat-x scroll 0 0 !important; */
+	background: #212020;
+	border: none;
+	margin-bottom: 0px;
+}
+ 
+.navbar-default .navbar-brand {
+	color: white;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: white;
+}
+
+.panel-default > .panel-heading{
+	background-color: #99B898;
 }

@@ -55,7 +55,7 @@
 				${sessionScope['currentUser'].username}
 			</c:when>
 			<c:when test="${empty sessionScope['currentUser']}">
-				Account
+				Tài khoản
 			</c:when>
 		</c:choose>
 	<span class="caret"></span></a>
@@ -64,24 +64,24 @@
 			<c:when test="${!empty sessionScope['currentUser']}">
 				<li>
 					<a href="User/Profile"><span
-					class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a>
+					class="glyphicon glyphicon-user" aria-hidden="true"></span> Thông tin</a>
 				</li>
 				<li>
 					<a href="User/Logout"><span
-					class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a>
+					class="glyphicon glyphicon-off" aria-hidden="true"></span> Đăng xuất</a>
 				</li>
 			</c:when>
 			<c:when test="${empty sessionScope['currentUser']}">
 				<li>
 					<a data-toggle="modal" data-target="#registerModal"><span
 					class="glyphicon glyphicon-check" aria-hidden="true"></span>
-					Register</a>
+					Đăng ký</a>
 				</li>
 				<li>
 					<a data-toggle="modal"
 					data-target="#LoginModal"><span
 					class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-					Login</a>
+					Đăng nhập</a>
 				</li>
 			</c:when>
 		</c:choose>	
@@ -156,7 +156,7 @@
 						ng-class="{'failed': !result.result , 'successed': result.result}">{{result.cause}}</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal"
-							ng-click="cleanData()">Close</button>
+							ng-click="cleanData()">Đóng</button>
 						<input type="submit" class="btn btn-primary" value="Register" />
 					</div>
 				</form>
@@ -168,13 +168,13 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<h4 class="modal-title" style="text-align: center;"
-						id="myModalLabel">Register</h4>
+						id="myModalLabel">Đăng ký</h4>
 				</div>
 				<div class="modal-body">
-					<h3 class="successed result">Register successed</h3>
+					<h3 class="successed result">Đăng ký thành công</h3>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 
 				</div>
 			</div>
@@ -195,13 +195,12 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 						<h4 class="modal-title" style="text-align: center;"
-							id="myModalLabel">Login</h4>
+							id="myModalLabel">Đăng nhập</h4>
 					</div>
 					<div class="modal-body">
 
 						<div class="form-group">
-							<label for="inputEmail3" class="col-sm-2 control-label">User
-								name</label>
+							<label for="inputEmail3" class="col-sm-2 control-label">Tên tài khoản</label>
 							<div class="col-sm-10">
 								<input type="text" maxlength="20"
 									class="form-control ng-dirty ng-valid" id="username"
@@ -210,7 +209,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+							<label for="inputPassword3" class="col-sm-2 control-label">Mật khẩu</label>
 							<div class="col-sm-10">
 								<input type="password" maxlength="40"
 									class="form-control ng-dirty ng-valid" id="password"
@@ -219,7 +218,7 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<div class="checkbox">
 									<label> <input type="checkbox" value="false"
@@ -227,7 +226,7 @@
 									</label>
 								</div>
 							</div>
-						</div>
+						</div> -->
 
 
 					</div>
@@ -235,8 +234,8 @@
 						ng-class="{'failed': !result.result , 'successed': result.result}">{{result.cause}}</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal"
-							ng-click="cleanData()">Close</button>
-						<input type="submit" class="btn btn-primary" value="Login" />
+							ng-click="cleanData()">Đóng</button>
+						<input type="submit" class="btn btn-primary" value="Đăng nhập" />
 					</div>
 				</form>
 			</div>

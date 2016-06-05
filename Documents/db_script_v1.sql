@@ -192,3 +192,6 @@ INSERT INTO Genres(name, photo) values('Loại khác', 'khac.png');
 INSERT INTO Permissions(Controller) values('/Videos/upload');
 INSERT INTO Permissions(Controller) values('/Videos/listVideos');
 INSERT INTO Permissions(Controller) values('/Videos/edit');
+INSERT INTO Permissions(Controller) values('/Admin')
+
+INSERT INTO UserPermissions(UserId, PermissionId, IsAllow) VALUES(3,3,true)

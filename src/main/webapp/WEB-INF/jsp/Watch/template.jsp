@@ -90,41 +90,55 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index"><span
-					class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
-					Pinfilms <span class="glyphicon glyphicon-picture" aria-hidden="true"></span></a>
+				<a class="navbar-brand" href="index"><img height="40px" width="80px" alt="" src="<c:url value='/resources/banners/logo.png'/>"> </a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Phim mới</a></li>
-					<li><a href="#">Xem nhiều</a></li>
+					<li><a href="Videos/newest/1">Phim mới</a></li>
+					<li><a href="Videos/mostviewed/1">Xem nhiều</a></li>
 					<li><a href="Videos/showAlls/1">Tất cả</a></li>
-					<li><a href="#">Thể loại</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Quản lý<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="Videos/upload">Upload</a></li>
-							<li><a href="Videos/listVideos">Movies</a></li>
-							<li><a href="#">Users</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Admin Page</a></li>
-
-
-						</ul></li>
+					<!-- <li><a href="#">Thể loại</a></li> -->
+					
+					<c:forEach items="${sessionScope['currentUser'].userPermissions}" var="per" >
+						
+						<c:if test="${per.permission.controller eq '/Manager'}  ">
+						<h1>hello</h1>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Quản lý<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="Videos/upload">Upload</a></li>
+									<li><a href="Videos/listVideos">Movies</a></li>
+									<li><a href="#">Users</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Admin Page</a></li>
+								</ul>
+							</li>
+						</c:if>
+					</c:forEach>
+					
+		
+					
+					
+				
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><form class="navbar-form navbar-left" role="search">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Search">
+					<li><form class="navbar-form navbar-left" action="Videos/search" method="GET">
+					<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+							<div class="box">
+							  <div class="container-4">
+							    <input type="text" id="search" name="key" placeholder="Search...">
+							    <button type="submit" class="icon"> <i class="fa fa-search"></i></button>
+							  </div>
 							</div>
-							<button type="submit" class="btn btn-default">Tìm</button>
-						</form></li>
-					<li>
+						</form>
+						</li>
+						
+					<li style="margin-top: 20px">
 					
 					<script type="text/javascript">
 						// This is called with the results from from FB.getLoginStatus().

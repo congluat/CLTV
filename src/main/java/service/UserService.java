@@ -12,6 +12,8 @@ public interface UserService {
 
 	public Result login(HttpServletRequest request, String username, String password);
 
+	public Result update(User user);
+	
 	public void delete(User user);
 
 	public User getUserByd(int id);

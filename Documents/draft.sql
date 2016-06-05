@@ -22,3 +22,5 @@ select * from Genres;
 select * from Types;
 
 select * from Permissions;
+
+select * from UserPermissions;

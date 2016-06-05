@@ -37,10 +37,11 @@ public class TheaterController {
 	 * Redirect to theater view. 
 	 */
 	@RequestMapping(value = "/play/{id}", method = RequestMethod.GET)
-	public String playVideo(ModelMap model, @PathVariable int id) {
+	public String playVideo(ModelMap model, @PathVariable int id, HttpServletRequest request) {
 		Video video = videoService.getVideoById(id);
 		model.addAttribute("video", video);
 		model.addAttribute("title", video.getName());
+		model.addAttribute("link", request.getRequestURL());
 		return "Watch/theater";
 	}
 	

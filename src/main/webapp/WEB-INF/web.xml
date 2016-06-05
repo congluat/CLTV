@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee">
 
-	<display-name>CLTV</display-name>
+	<display-name>PinFilms</display-name>
 
 
 	<!-- <error-page> <error-code>500</error-code> <location>/WEB-INF/jsp/error/error500.jsp</location> 

@@ -116,4 +116,25 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByEmail(email);
 	}
 
+	@Override
+	public Result update(User user) {
+		try {
+			// create user when all info are filled
+			if (user.getUsername().equals("") || user.getPassword().equals("") || user.getEmail().equals("")
+					|| user.getDoB().equals("") || user.getStatus().equals("") || user.getTime().equals("")) {
+
+				return new Result(false, "Data can not be blank");
+			} else {
+				user.setPassword(MD5Encrypt.hashString(user.getPassword()));
+				userDao.updateUser(user);
+
+				return new Result(true, "Update successed");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Result(false, "Update failed");
+		}
+	}
+
 }
