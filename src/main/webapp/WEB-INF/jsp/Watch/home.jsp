@@ -197,29 +197,10 @@
 </div>
 <div class="container">
 	
-
-	<h2 class="col-md-12">Phim ngắn của ngành Quản Trị Công Nghệ &
-		Truyền Thông</h2>
+<c:forEach items="${types}" var="type" >
+	<h2 class="col-md-12">${type.name}</h2>
 	<div class="col-md-12">
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-		<c:forEach items="${videos}" var="video">
+		<c:forEach items="${type.videos}" var="video">
 			<a href="Theater/play/${video.id}">
 				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
 					<img alt=""
@@ -229,79 +210,7 @@
 			</a>
 		</c:forEach>
 	</div>
-	<h2 class="col-md-12">Phim ngắn trong nước</h2>
-	<div class="col-md-12">
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-	</div>
-	<h2 class="col-md-12">Phim ngắn nước ngoài</h2>
-	<div class="col-md-12">
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-	</div>
-	<h2 class="col-md-12">TCV ngành Quản Trị Công Nghệ & Truyền Thông</h2>
-	<div class="col-md-12">
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-	</div>
-	<h2 class="col-md-12">TCV và clip hài hay trong nước và ngoài nước</h2>
-	<div class="col-md-12">
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-		<c:forEach items="${videos}" var="video">
-			<a href="Theater/play/${video.id}">
-				<div class="movieBox col-xs-4 col-sm-4 col-md-2 ">
-					<img alt=""
-						src="<c:url value='/resources/poster/${video.poster}'/>">
-					<div class="name">${video.name}</div>
-				</div>
-			</a>
-		</c:forEach>
-	</div>
+</c:forEach>
+	
+	
 </div>

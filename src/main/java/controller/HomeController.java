@@ -9,7 +9,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.Type;
 import model.Video;
+import service.TypeService;
 import service.VideoService;
 
 @Controller
@@ -19,12 +21,15 @@ public class HomeController {
 	@Qualifier("videoService")
 	VideoService videoService;
 
+	@Autowired
+	@Qualifier("typeService")
+	TypeService typeService;
+	
 	
 	@RequestMapping(value = {"/","/home","/index"}, method = RequestMethod.GET )
 	public String Home(ModelMap model) {
-		List<Video> videos = videoService.listAllVideos();
-		System.out.println(videos.size());
-		model.addAttribute("videos", videos);
+		List<Type> types = typeService.getAllTypes();
+		model.addAttribute("types", types);
 		model.addAttribute("title", "Trang chủ");
 		return "Watch/home";
 	}
