@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -119,5 +120,17 @@ public class AdminController {
 		model.addAttribute("genres", list);
 		model.addAttribute("title", "Các thể loại");
 		return "Admin/mnggnrs";
+	}
+	
+	@ModelAttribute("genres")
+	public Collection<Genre> getGenres() {
+		List<Genre> genres = genreService.getAllGenres();
+		return genres;
+	}
+	
+	@ModelAttribute("types")
+	public Collection<Type> getTypes() {
+		List<Type> types = typeService.getAllTypes();
+		return types;
 	}
 }
